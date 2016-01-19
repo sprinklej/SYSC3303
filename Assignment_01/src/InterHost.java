@@ -1,4 +1,7 @@
-// description
+/* The intermediate host program intercepts
+ * packets before passing them along to 
+ * their final destinations.
+ */
 
 import java.io.*;
 import java.net.*;

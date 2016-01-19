@@ -1,4 +1,7 @@
-// description
+/* The server program accepts read
+ * and write requests from the client
+ * program.
+ */
 
 import java.io.*;
 import java.net.*;
