@@ -20,7 +20,8 @@ Client.java
 
 ——Setup instructions:
 Import the project into Eclipse
-	-Should be able to import project as: General -> Existing Projects into Workspace 
+	-Should be able to import project as: 
+	General -> Projects into Workspace 
 
 
 ——Run instructions:
