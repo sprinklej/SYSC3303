@@ -56,7 +56,7 @@ public class Server {
 			System.exit(1);
 		}
 
-		// Process the received Datagram.
+		// Process and output the received Datagram info
 		System.out.println("\nServer: Packet received:");
 		System.out.println("From host: " + receivePacket.getAddress());
 		System.out.println("Host port: " + receivePacket.getPort());
@@ -89,7 +89,7 @@ public class Server {
 	
 		// check for a single "0" between the text fields (check middle byte) - should contain a single 0
 		int cntr = 0;
-		for (int i = 2; i < receivePacket.getLength() - 1; i++) {
+		for (int i = 2; i < receivePacket.getLength() - 1; i++) { // 3rd element of array to second last element
 			if (data[i] == (byte) 0) {
 				cntr++;
 			}	
@@ -105,7 +105,8 @@ public class Server {
 	
 	// Sends Datagram packets to the client
 	// Prints out the packets details
-	public void sendPacket(byte[] bMsg) {	
+	public void sendPacket(byte[] bMsg) {
+		// create Datagram packet
 		sendPacket = new DatagramPacket(bMsg, bMsg.length,
 					receivePacket.getAddress(), receivePacket.getPort());
 
@@ -115,7 +116,7 @@ public class Server {
 		System.out.println("Length: " + sendPacket.getLength());
 		this.printByteMsg(bMsg, bMsg.length);
 
-		// Construct a Datagram socket to send Datagram packets.
+		// Construct a Datagram socket to send Datagram packets
 		try {
 			sendSocket = new DatagramSocket();
 		} catch (SocketException e1) {
@@ -123,7 +124,7 @@ public class Server {
 			System.exit(1);
 		}
 
-		// Send the Datagram packet to the client via the send socket. 
+		// Send the Datagram packet
 		try {
 			sendSocket.send(sendPacket);
 		} catch (IOException e) {
@@ -138,6 +139,7 @@ public class Server {
 	
 	
 	// Receives Datagram packets from the client
+	// Parses received packets
 	// Sends Datagram packets to the client
 	public void receiveAndRespond() {
 		// Construct a DatagramPacket for receiving packets up 
@@ -145,17 +147,17 @@ public class Server {
 		byte data[] = new byte[100];
 		receivePacket = new DatagramPacket(data, data.length);
 		
-		int i = 1; // counter for convenience
+		int i = 1; // counter strictly for convenience
 		while (true) { // Continuously wait for incoming packets
 			System.out.println("--------------------------------------------------------");
 			System.out.println("--------------------------------------------------------");
 			System.out.println("Server: Waiting for Packet. Round #" + i);
 			i++;
 			
-			// wait to receive packet
+			// Wait to receive packet
 			this.receivePacket(data);	
 			
-			// Parse the received Datagram packet
+			// Parse received Datagram packet
 			this.parsePacket(data);
 			
 			// Create response message to send back
