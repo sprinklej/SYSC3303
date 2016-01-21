@@ -26,7 +26,7 @@ public class Client {
 	
 	// Converts the message to be sent into a byte array
 	// Char rwe: read request = r, write request = w, error = e
-	public void byteMsg(byte[] array, char rwe, String fileN, String mode) {
+	private void byteMsg(byte[] array, char rwe, String fileN, String mode) {
 		int i = 0;
 		
 		array[i] = (byte) 0; // leading zero
@@ -62,7 +62,7 @@ public class Client {
 	
 	
 	// prints out the message to be sent in bytes (HEX)
-	public void printByteMsg(byte[] bMsg, int len) {
+	private void printByteMsg(byte[] bMsg, int len) {
 		System.out.println("\nClient: Packet in bytes - represented as HEX:");
 		for (int i = 1; i <= len; i++) {
 			if (Integer.toHexString(bMsg[i-1]).length() == 1) {
@@ -79,7 +79,7 @@ public class Client {
 	
 	// Sends Datagram packets to the server 
 	// Prints out the packets details for each
-	public void sendPacket(byte[] bMsg) {
+	private void sendPacket(byte[] bMsg) {
 		// Create the Datagram packet
 		try {
 			sendPacket = new DatagramPacket(bMsg, bMsg.length,
@@ -108,7 +108,7 @@ public class Client {
 	
 	// Receive a Datagram packet on the sendReceive socket
 	// and print out the packets details 
-	public void receivePacket() {
+	private void receivePacket() {
 		// Wait for incoming Datagram packet
 		byte data[] = new byte[100];
 		receivePacket = new DatagramPacket(data, data.length);

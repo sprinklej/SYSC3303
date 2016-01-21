@@ -27,7 +27,7 @@ public class Server {
 	
 	
 	// prints out the message in bytes (HEX)
-	public void printByteMsg(byte[] bMsg, int len) {		
+	private void printByteMsg(byte[] bMsg, int len) {		
 		System.out.println("\nServer: Packet in bytes - represented as HEX:");
 		for (int i = 1; i <= len; i++) {
 			if (Integer.toHexString(bMsg[i-1]).length() == 1) {
@@ -44,7 +44,7 @@ public class Server {
 		
 	// Receive a Datagram packet
 	// print out the packets details 
-	public void receivePacket(byte data[]) {
+	private void receivePacket(byte data[]) {
 		// Block until a datagram packet is received from receiveSocket.
 		try {        
 			System.out.println("Waiting..."); // so we know we're waiting
@@ -68,7 +68,7 @@ public class Server {
 	
 	
 	// Parse incoming packets for errors
-	public void parsePacket(byte data[]) {
+	private void parsePacket(byte data[]) {
 		System.out.println("\nServer: Parsing received packet.");
 		if (data[0] != (byte) 0) { // check first byte - should == 0 
 			System.out.println("ERROR - First byte incorrect.");
@@ -105,7 +105,7 @@ public class Server {
 	
 	// Sends Datagram packets to the client
 	// Prints out the packets details
-	public void sendPacket(byte[] bMsg) {
+	private void sendPacket(byte[] bMsg) {
 		// create Datagram packet
 		sendPacket = new DatagramPacket(bMsg, bMsg.length,
 					receivePacket.getAddress(), receivePacket.getPort());

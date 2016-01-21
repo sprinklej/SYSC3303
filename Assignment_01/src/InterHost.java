@@ -78,7 +78,7 @@ public class InterHost {
 	
 	
 	// Send packets to the client system
-	public void sendClientPacket(byte[] data) {
+	private void sendClientPacket(byte[] data) {
 		// Create packet and output its info
 		sendPacket = new DatagramPacket(data, receivePacket.getLength(),
 								clientAddress, clientPort);
@@ -113,7 +113,7 @@ public class InterHost {
 	
 	
 	// Send packets to the server system
-	public void sendServerPacket(byte[] data) {
+	private void sendServerPacket(byte[] data) {
 		// Create packet and output its info
 		sendPacket = new DatagramPacket(data, receivePacket.getLength(),
 									receivePacket.getAddress(), 1025); // CHANGE BACK TO 69 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -138,7 +138,7 @@ public class InterHost {
 	
 	
 	// Receives packets from the server system
-	public void receiveServerPacket(byte[] data) {
+	private void receiveServerPacket(byte[] data) {
 		// Block until a Datagram packet is received on the sendReceiveSocket.
 		try { 
 			sendReceiveSocket.receive(receivePacket);
