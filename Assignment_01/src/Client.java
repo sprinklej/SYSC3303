@@ -7,8 +7,8 @@ import java.net.*;
 
 public class Client {
 	
-	DatagramPacket sendPacket, receivePacket;
-	DatagramSocket sendReceiveSocket;
+	private DatagramPacket sendPacket, receivePacket;
+	private DatagramSocket sendReceiveSocket;
 	
 	
 	// constructor

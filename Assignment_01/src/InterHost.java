@@ -8,10 +8,10 @@ import java.net.*;
 
 public class InterHost {
 
-	DatagramPacket sendPacket, receivePacket;
-	DatagramSocket receiveSocket, sendSocket, sendReceiveSocket;
-	int clientPort, clientLen;
-	InetAddress clientAddress;
+	private DatagramPacket sendPacket, receivePacket;
+	private DatagramSocket receiveSocket, sendSocket, sendReceiveSocket;
+	private int clientPort, clientLen;
+	private InetAddress clientAddress;
 	
 	
 	// constructor

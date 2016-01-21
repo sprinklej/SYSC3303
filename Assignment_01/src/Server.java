@@ -8,8 +8,8 @@ import java.net.*;
 
 public class Server {
 
-	DatagramPacket sendPacket, receivePacket;
-	DatagramSocket sendSocket, receiveSocket;
+	private DatagramPacket sendPacket, receivePacket;
+	private DatagramSocket sendSocket, receiveSocket;
 	
 	
 	// constructor
