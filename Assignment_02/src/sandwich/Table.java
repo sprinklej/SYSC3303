@@ -1,39 +1,72 @@
 package sandwich;
 
+//import java.lang.Thread.State;
+//import java.lang.Thread;
+
 public class Table {
-	private boolean bread = false;
-	private boolean peanutButter = false;
-	private boolean jam = false;
+	private String[] ingredients = new String[] {null, null};
+	private boolean emptyTable = true; // if true then the Agent can add ingredients to the table
+
 	
-	// getters
-	public void setBread(boolean addBread) {
-		this.bread = addBread;
+	// put ingredients onto the table
+	public synchronized void addIngredients(String[] ingrdnts) {		
+		// while NOT emptyTable - wait for it to be empty
+		while (!emptyTable) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				System.err.println(e);
+			}
+		}
+
+		ingredients = ingrdnts;
+		emptyTable = false;
+		System.out.println(Thread.currentThread().getName() + " - Ingredients put on table.");
+		notifyAll();
 	}
+
 	
-	public void setPeanutButter(boolean addPeanutButter) {
-		this.peanutButter = addPeanutButter;
-	}
+	// remove ingredients from the table
+	public synchronized String[] takeIngredients(String uIngredient, Thread agent) {
+		String[] returnIngrdnts = new String[2];		
+		// while emptyTable - wait for it to be NOT empty
+		while (emptyTable) {			
+			// check if agent is alive - if not kill this thread
+			if (!agent.isAlive()) {
+				returnIngrdnts[0] = "dead";
+				return returnIngrdnts;
+			}
+			
+			try {
+				System.out.println(Thread.currentThread().getName() + " - waiting...");
+				wait();
+			} catch (InterruptedException e) {
+				System.err.println(e);
+			}
+			
+
+		}
+		
+		
+		
+		if ((uIngredient == ingredients[0]) || (uIngredient == ingredients[1])) {
+			returnIngrdnts[0] = null;
+			returnIngrdnts[1] = null;
 	
-	public void setJam(boolean addJam) {
-		this.jam = addJam;
-	}
+			notifyAll();
+			return returnIngrdnts;
+		}
+		
+		returnIngrdnts = ingredients;
+		System.out.println(Thread.currentThread().getName() + " - Took ingredients: " + returnIngrdnts[0] 
+				+ " and " + returnIngrdnts[1] + ", made a sandwich and ate it.");
 	
-	// setters
-	public boolean getBread() {
-		return this.bread;
-	}
-	
-	public boolean getPeanutButter() {
-		return this.peanutButter;
-	}
-	
-	public boolean getJam() {
-		return this.jam;
-	}
-	
-	
-	public synchronized void addIngredients(boolean ingrdnt1, boolean ingrdnt2) {
-	
+		ingredients[0] = null; // remove the ingredients from the table
+		ingredients[1] = null;
+		
+		emptyTable = true;
+		notifyAll();
+		return returnIngrdnts;	
 	}
 	
 }
