@@ -1,8 +1,5 @@
 package sandwich;
 
-//import java.lang.Thread.State;
-//import java.lang.Thread;
-
 public class Table {
 	private String[] ingredients = new String[] {null, null};
 	private boolean emptyTable = true; // if true then the Agent can add ingredients to the table
@@ -22,6 +19,7 @@ public class Table {
 		ingredients = ingrdnts;
 		emptyTable = false;
 		System.out.println(Thread.currentThread().getName() + " - Ingredients put on table.");
+		//System.out.println(Thread.currentThread().getName() + " - Put " + ingredients[0] + " and " + ingredients[1] + " on the table.");
 		notifyAll();
 	}
 

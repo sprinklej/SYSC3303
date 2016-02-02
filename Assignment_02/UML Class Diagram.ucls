@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="sandwich.Agent" project="Assignment_02" 
     file="/Assignment_02/src/sandwich/Agent.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="119" width="173" x="118" y="65"/>    
+    <position height="119" width="173" x="30" y="22"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="sandwich.Kitchen" project="Assignment_02" 
     file="/Assignment_02/src/sandwich/Kitchen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="125" x="540" y="65"/>    
+    <position height="101" width="125" x="452" y="22"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="sandwich.Table" project="Assignment_02" 
     file="/Assignment_02/src/sandwich/Table.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="155" width="233" x="225" y="242"/>    
+    <position height="155" width="233" x="137" y="199"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="sandwich.Chef" project="Assignment_02" 
     file="/Assignment_02/src/sandwich/Chef.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="137" width="169" x="331" y="65"/>    
+    <position height="137" width="169" x="243" y="22"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -38,7 +38,7 @@
     </display>  
   </class>  
   <association id="5">    
-    <end type="SOURCE" refId="4" navigable="false">      
+    <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="6" name="table"/>      
       <multiplicity id="7" minimum="0" maximum="1"/>    
     </end>    
@@ -46,7 +46,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="8">    
-    <end type="SOURCE" refId="1" navigable="false">      
+    <end type="SOURCE" refId="4" navigable="false">      
       <attribute id="9" name="table"/>      
       <multiplicity id="10" minimum="0" maximum="1"/>    
     </end>    

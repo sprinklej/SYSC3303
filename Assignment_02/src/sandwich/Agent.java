@@ -12,7 +12,7 @@ public class Agent implements Runnable {
 	}
 	
 	
-	// return a random ingredient
+	// return a random ingredient - bread, peanut butter, or jam
 	private String generateIngredient() {
 		//http://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
 		Random random = new Random();
