@@ -23,7 +23,7 @@ public class Chef implements Runnable {
 			
 			if (ingredients[0] != null) {
 				System.out.println(Thread.currentThread().getName() + " - Used ingredients: " + ingredients[0] 
-						+ " and " + ingredients[1] + "to make a sandwich and eat it.");
+						+ " and " + ingredients[1] + " to make a sandwich and eat it.");
 			}
 			if (ingredients[0] == "dead") {
 				System.out.println(Thread.currentThread().getName() + " - Thread ending... Good bye");
