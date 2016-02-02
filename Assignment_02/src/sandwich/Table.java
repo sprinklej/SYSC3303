@@ -57,9 +57,10 @@ public class Table {
 			return returnIngrdnts;
 		}
 		
-		returnIngrdnts = ingredients;
+		returnIngrdnts[0] = ingredients[0];
+		returnIngrdnts[1] = ingredients[1];
 		System.out.println(Thread.currentThread().getName() + " - Took ingredients: " + returnIngrdnts[0] 
-				+ " and " + returnIngrdnts[1] + ", made a sandwich and ate it.");
+				+ " and " + returnIngrdnts[1] + ".");
 	
 		ingredients[0] = null; // remove the ingredients from the table
 		ingredients[1] = null;
