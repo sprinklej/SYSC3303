@@ -6,7 +6,7 @@ Assignment 02
 
 ——Purpose
 This project lets chefs make sandwiches out of 3 ingredients - bread, peanut butter, and jam.
-There is an agent which has unlimited availability of all 3 ingredients. The agent puts 2 out of the 3 ingredienta onto a table. 
+There is an agent which has unlimited availability of all 3 ingredients. The agent puts 2 out of the 3 ingredients onto a table. 
 There is also three chefs, each with an unlimited supply of only one of the 3 ingredients, each chef has a different unlimited ingredient. The chef who has the unlimited supply of the ingredient that the agent did not place on the table, takes the ingredients from the table (leaving the table empty) makes a sandwich and eats it.
 This process of the agent supplying 2 ingredients and the chefs taking the ingredients to makes sandwiches repeats - 20 times total.
 
@@ -14,6 +14,7 @@ This process of the agent supplying 2 ingredients and the chefs taking the ingre
 ——Java Files
 Agent.java
 Contains the code to run an agent thread, which randomly decides which 2 ingredients to place on the table when it is empty.
+In one step the agent prepares the ingredients that it is going to put on the table. Then in another step (when the agent has access to an empty table) it places the ingredients on the table.
 -The thread dies after putting ingredients on the table 20 times.
 
 Chef.java
@@ -42,7 +43,7 @@ There are no known issues at this time.
 
 
 ——Diagrams:
-The class diagram was generated using the ObjectAid UML Diagram plugin for eclipse.
+The class diagram was generated using the ObjectAid UML Diagram plug-in for eclipse.
 All other diagrams were built using https://www.draw.io
 
 
