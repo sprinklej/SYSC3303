@@ -7,60 +7,70 @@ public class Table {
 	
 	// put ingredients onto the table
 	public synchronized void addIngredients(String[] ingrdnts) {		
+		// check the agent is not trying to add 2 of the same ingredients
+		if (ingrdnts[0] == ingrdnts[1]) {
+			System.out.println("Error - Supplied ingredients are the same. Ingredients not put on the table.");
+			return;
+		}
+		
+		// check to make sure the agent is only adding bread, peanut butter, or jam
+		// put into 2 if's to remove complexity of 1 giant if statement
+		if ((ingrdnts[0] != "BREAD") && (ingrdnts[0] != "PEANUT BUTTER") && (ingrdnts[0] != "JAM")) {
+			System.out.println("Error - Supplied ingredient 1 of wrong type. Ingredients not put on the table");
+			return;
+		}
+		if ((ingrdnts[1] != "BREAD") && (ingrdnts[1] != "PEANUT BUTTER") && (ingrdnts[1] != "JAM")) {
+			System.out.println("Error - Supplied ingredient 2 of wrong type. Ingredients not put on the table");
+			return;
+		}
+		
 		// while NOT emptyTable - wait for it to be empty
 		while (!emptyTable) {
 			try {
-				wait();
+				this.wait();
 			} catch (InterruptedException e) {
 				System.err.println(e);
 			}
 		}
 
-		ingredients = ingrdnts;
+		ingredients[0] = ingrdnts[0];
+		ingredients[1] = ingrdnts[1];
 		emptyTable = false;
 		System.out.println(Thread.currentThread().getName() + " - Ingredients put on table.");
-		//System.out.println(Thread.currentThread().getName() + " - Put " + ingredients[0] + " and " + ingredients[1] + " on the table.");
 		notifyAll();
 	}
 
 	
 	// remove ingredients from the table
-	public synchronized String[] takeIngredients(String uIngredient, Thread agent) {
-		String[] returnIngrdnts = new String[2];		
+	public synchronized String[] takeIngredients(String uIngredient) {
+		String[] returnIngrdnts = new String[] {null, null};		
+		
 		// while emptyTable - wait for it to be NOT empty
-		while (emptyTable) {			
-			// check if agent is alive - if not kill this thread
-			if (!agent.isAlive()) {
-				returnIngrdnts[0] = "dead";
-				return returnIngrdnts;
-			}
-			
+		while (emptyTable) {		 
 			try {
-				System.out.println(Thread.currentThread().getName() + " - waiting...");
-				wait();
+				//System.out.println(Thread.currentThread().getName() + " - waiting..."); // see who is waiting when
+				this.wait();
 			} catch (InterruptedException e) {
-				System.err.println(e);
+				returnIngrdnts[0] = "kill";
+				return returnIngrdnts;
 			}
 			
 
 		}
 		
-		
-		
-		if ((uIngredient == ingredients[0]) || (uIngredient == ingredients[1])) {
-			returnIngrdnts[0] = null;
-			returnIngrdnts[1] = null;
-	
+		// Check if the current chef can take the ingredients off the table
+		if ((uIngredient == ingredients[0]) || (uIngredient == ingredients[1])) {	
 			notifyAll();
 			return returnIngrdnts;
 		}
 		
+		// check takes ingredients off the table 
 		returnIngrdnts[0] = ingredients[0];
 		returnIngrdnts[1] = ingredients[1];
-		System.out.println(Thread.currentThread().getName() + " - Took ingredients: " + returnIngrdnts[0] 
+		System.out.println(Thread.currentThread().getName() + " - TOOK ingredients: " + returnIngrdnts[0] 
 				+ " and " + returnIngrdnts[1] + " off of the table.");
 	
-		ingredients[0] = null; // remove the ingredients from the table
+		ingredients[0] = null;
 		ingredients[1] = null;
 		
 		emptyTable = true;

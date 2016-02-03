@@ -53,7 +53,7 @@ public class Agent implements Runnable {
 			table.addIngredients(ingredients);
 		}
 		
-		System.out.println(Thread.currentThread().getName() + " - Thread ending... Good bye\n");
+		System.out.println("\n" + Thread.currentThread().getName() + " - Thread ending... Good bye");
 	}
 	
 }
