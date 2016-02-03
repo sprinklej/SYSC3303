@@ -58,7 +58,7 @@ public class Table {
 		returnIngrdnts[0] = ingredients[0];
 		returnIngrdnts[1] = ingredients[1];
 		System.out.println(Thread.currentThread().getName() + " - Took ingredients: " + returnIngrdnts[0] 
-				+ " and " + returnIngrdnts[1] + ".");
+				+ " and " + returnIngrdnts[1] + " off of the table.");
 	
 		ingredients[0] = null; // remove the ingredients from the table
 		ingredients[1] = null;

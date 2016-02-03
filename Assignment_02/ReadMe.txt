@@ -17,7 +17,8 @@ Contains the code to run an agent thread, which randomly decides which 2 ingredi
 -The thread dies after putting ingredients on the table 20 times.
 
 Chef.java
-Contains the code to run a chef thread, which takes ingredients from the table (leaving it empty) to make a sandwich with.
+Contains the code to run a chef thread, which takes ingredients from the table (leaving it empty) to make a sandwich with and then eat it.
+In one step the chef takes the ingredients, and in another step (when the chef process becomes active again) the chef makes and eats the sandwich with the ingredients it took earlier.
 -The thread dies after detecting that Agent thread has terminated and the thread cannot make a sandwich with any of the ingredients that may be on the table.
 
 Kitchen.java
@@ -40,5 +41,10 @@ Run the kitchen class as a Java Application.
 There are no known issues at this time.
 
 
-——Learning
+——Diagrams:
+The class diagram was generated using the ObjectAid UML Diagram plugin for eclipse.
+All other diagrams were built using https://www.draw.io
+
+
+——Learning:
 This project is multi-threaded and contains a class that is synchronized between 4 thread.
